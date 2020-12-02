@@ -1,0 +1,99 @@
+clase pública ClaseLista {
+
+    NodoLista inicio, fin;
+
+    public ClaseLista () {
+        this.inicio = null;
+        this.fin = null;
+    }
+
+    public boolean EstaVacia () {
+        retorno inicio == nulo;
+    }
+
+    public void InsertarAlInicio (int d) {
+        inicio = new NodoLista (d, inicio);
+        if (fin == null) {
+            fin = inicio;
+        }
+    }
+
+    public void InsertarAlFinal (int d) {
+        si (EstaVacia ()) {
+            inicio = fin = nuevo NodoLista (d);
+        } más {
+            fin.siguiente = nuevo NodoLista (d);
+            fin = fin.siguiente;
+        }
+    }
+
+    public int EliminarInicio () {
+        int aux = inicio.dato;
+        if (inicio == fin) {
+            inicio = fin = null;
+        } más {
+            inicio = inicio.siguiente;
+        }
+        return aux;
+    }
+
+    public int EliminarFin () {
+        int aux = fin.dato;
+        if (inicio == fin) {
+            inicio = fin = null;
+        } más {
+            NodoLista r = inicio;
+            while (r.siguiente! = fin) {
+                r = r.siguiente;
+            }
+            fin = r;
+            fin.siguiente = null;
+        }
+        return aux;
+    }
+
+    public boolean EstaEnLista (int dato) {
+        NodoLista R = inicio;
+        while (R! = null && R.dato! = dato) {
+            R = R.siguiente;
+        }
+        return R! = nulo;
+    }
+
+    public void BorrarNodo (int dato) {
+        if (EstaEnLista (dato)) {
+            // Primer caso - Unico Nodo
+            if (inicio == fin && dato == inicio.dato) {
+                inicio = fin = null;
+            } else if (dato == inicio.dato) {
+                inicio = inicio.siguiente;
+            } más {
+                NodoLista Ant, Temp;
+                Hormiga = inicio;
+                Temp = inicio.siguiente;
+                while (Temp! = null && Temp.dato! = dato) {
+                    Ant = Ant.siguiente;
+                    Temp = Temp.siguiente;
+                }
+                if (Temp! = null) {
+                    Ant.siguiente = Temp.siguiente;
+                    if (Temp == fin) {
+                        fin = hormiga;
+                    }
+                }
+            }
+            System.out.println ("Dato eliminado");
+            regreso;
+        }
+        System.out.println ("El dato no existe");
+    }
+
+    public void MostrarLista () {
+        NodoLista R = inicio;
+        mientras que (R! = nulo) {
+            System.out.println ("[" + R.dato + "]");
+            R = R.siguiente;
+        }
+        System.out.println ("");
+    }
+}
